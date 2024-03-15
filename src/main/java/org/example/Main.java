@@ -2,9 +2,7 @@ package org.example;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Main {
@@ -77,20 +75,35 @@ public class Main {
         System.out.println();
     }
 
+    private static boolean isOpenLetter(int lenWord) { //написать функцию для определения есть ли заданная буква в слове
+        return true;
+    }
+
     private static void runGame() {
         String[] arrayWords = createArrayWords();
+
         Scanner scanner = new Scanner(System.in);
+
         String word = chooseRandomWord(arrayWords);
-        char[] maskWord = createMaskWord(word);
-        int countReplace = 0;
         int len = word.length();
+
+        char[] maskWord = createMaskWord(word);
+
+        int countReplace = 0;
+
         char[] arrayErrors = new char[6];
         int idxArrayErrors = 0;
-        System.out.println("Если вы решите закончить игру, просто введите 0 или 1");
+
+        Map<Character, Boolean> alphabetErrors = new HashMap<>();
+        for(int i = 1072; i < 1104; i++) {
+            alphabetErrors.put((char)i, false); //false - значит, буква не использовалась, как ошибка
+        }
+        alphabetErrors.put((char)1105, false);
+
         op: while (true) {
             if (countReplace == len) {
                 System.out.println("Вы победили! Ура!");
-                System.out.print("Было загадано слово: " + word + "\n");
+                System.out.println("Было загадано слово: " + word);
                 break;
             }
 
@@ -117,25 +130,29 @@ public class Main {
                     Render.drawHangmanWithHuman(word);
                     break op;
             }
-            char letter = scanner.next().charAt(0);
 
-            if (letter == '0' | letter == '1') {
-                System.out.println("Подтвердите свой выбор!");
-                break;
-            }
-            System.out.println();
-            boolean flag = false;
+            char letter = scanner.next().charAt(0);
+            int rus = letter;
+            
+            boolean isInWord = false;
             for(int i = 0; i < word.length(); i++) {
                 if (word.charAt(i) == letter) {
                     maskWord[i] = letter;
                     countReplace++;
-                    flag = true;
+                    isInWord = true;
                 }
             }
 
-            if (flag == false) {
-                arrayErrors[idxArrayErrors] = letter;
-                idxArrayErrors++;
+            if (!((rus >= 1072 && rus <= 1103) || rus == 1105)) {
+                isInWord = true;
+            }
+
+            if (!isInWord) {
+                if (!alphabetErrors.get(letter)) {
+                    arrayErrors[idxArrayErrors] = letter;
+                    idxArrayErrors++;
+                }
+                alphabetErrors.put(letter, true);
             }
         }
     }

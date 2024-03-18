@@ -9,9 +9,9 @@ public class Render {
         System.out.println("         " + (char)124);
         System.out.println("         " + (char)124);
         System.out.print("         " + (char)124 + "              Слово: ");
-        Main.printArray(maskWord);
+        printArray(maskWord);
         System.out.print("         " + (char)124 + "              Ошибки (" + idxArrayErrors + "): ");
-        Main.printArray(arrayErrors, idxArrayErrors);
+        printArray(arrayErrors, idxArrayErrors);
         System.out.print("  " + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + "               Введите одну мальнекую русскую букву: ");
     }
 
@@ -23,9 +23,9 @@ public class Render {
         System.out.println("         " + (char)124);
         System.out.println("         " + (char)124);
         System.out.print("         " + (char)124 + "              Слово: ");
-        Main.printArray(maskWord);
+        printArray(maskWord);
         System.out.print("         " + (char)124 + "              Ошибки (" + idxArrayErrors + "): ");
-        Main.printArray(arrayErrors, idxArrayErrors);
+        printArray(arrayErrors, idxArrayErrors);
         System.out.print("  " + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45  + "               Введите одну мальнекую русскую букву: ");
     }
 
@@ -37,9 +37,9 @@ public class Render {
         System.out.println("  " + (char)124 + "      " + (char)124);
         System.out.println("  " + (char)124 + "      " + (char)124);
         System.out.print("  " + (char)124 + "      " + (char)124 + "              Слово: ");
-        Main.printArray(maskWord);
+        printArray(maskWord);
         System.out.print("         " + (char)124 + "              Ошибки (" + idxArrayErrors + "): ");
-        Main.printArray(arrayErrors, idxArrayErrors);
+        printArray(arrayErrors, idxArrayErrors);
         System.out.print("  " + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45  + "               Введите одну мальнекую русскую букву: ");
     }
 
@@ -51,9 +51,9 @@ public class Render {
         System.out.println(" "+ (char)92 + "" + (char)124 + "      " + (char)124);
         System.out.println("  " + (char)124 + "      " + (char)124);
         System.out.print("  " + (char)124 + "      " + (char)124 + "              Слово: ");
-        Main.printArray(maskWord);
+        printArray(maskWord);
         System.out.print("         " + (char)124 + "              Ошибки (" + idxArrayErrors + "): ");
-        Main.printArray(arrayErrors, idxArrayErrors);
+        printArray(arrayErrors, idxArrayErrors);
         System.out.print("  " + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + "               Введите одну мальнекую русскую букву: ");
     }
 
@@ -65,9 +65,9 @@ public class Render {
         System.out.println(" " + (char)92 + (char)124 + (char)47 + "     " + (char)124);
         System.out.println("  " + (char)124 + "      " + (char)124);
         System.out.print("  " + (char)124 + "      " + (char)124 + "              Слово: ");
-        Main.printArray(maskWord);
+        printArray(maskWord);
         System.out.print("         " + (char)124 + "              Ошибки (" + idxArrayErrors + "): ");
-        Main.printArray(arrayErrors, idxArrayErrors);
+        printArray(arrayErrors, idxArrayErrors);
         System.out.print("  " + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45  + "               Введите одну мальнекую русскую букву: ");
     }
 
@@ -79,9 +79,9 @@ public class Render {
         System.out.println(" " + (char)92 + (char)124 + (char)47 + "     " + (char)124);
         System.out.println("  " + (char)124 + "      " + (char)124);
         System.out.print(" " + (char)47 + (char)124 + "      " + (char)124 + "              Слово: ");
-        Main.printArray(maskWord);
+        printArray(maskWord);
         System.out.print("         " + (char)124 + "              Ошибки (" + idxArrayErrors + "): ");
-        Main.printArray(arrayErrors, idxArrayErrors);
+        printArray(arrayErrors, idxArrayErrors);
         System.out.print("  " + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45  + "               Введите одну мальнекую русскую букву: ");
     }
 
@@ -95,6 +95,19 @@ public class Render {
         System.out.println(" " + (char)47 + (char)124 + (char)92 + "     " + (char)124);
         System.out.println("         " + (char)124 + "              Вы проиграли(((");
         System.out.println("  " + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + (char)45 + "               Было загадано слово: " + word);
+    }
 
+    private static void printArray(char[] maskWord) {
+        for (char c : maskWord) {
+            System.out.print(c);
+        }
+        System.out.println();
+    }
+
+    private static void printArray(char[] array, int end) {
+        for (int i = 0; i < end; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
     }
 }
